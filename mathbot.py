@@ -16,7 +16,7 @@ add = st.checkbox("Addition", value = True)
 sub = st.checkbox("Subtraction", value = True)
 mult = st.checkbox("Multiplication", value = True)
 
-mode = st.radio("Choose Audio/Visual Mode", ['Audio','Visual'], index = 0)
+# mode = st.radio("Choose Audio/Visual Mode", ['Audio','Visual'], index = 0)
 
 add_sub_range = st.slider('Choose Upper Range for Addition/Subtraction', min_value = 100, max_value = 10000, step = 50, value = 100)
 multiply_range1 = st.slider('Choose Upper Range for Multiplication number 1', min_value = 12, max_value = 1000, step = 2, value = 12)
@@ -126,21 +126,21 @@ def Answer_check():
   else:
     st.session_state.score-=1
 
-if mode == "Visual":
-  output_list = Visual()
-  output_text = output_list[0]
-  output_answer = output_list[1]
-  user_input = st.text_input(output_text, key = "input", on_change = Answer_check)
+# if mode == "Visual":
+#   output_list = Visual()
+#   output_text = output_list[0]
+#   output_answer = output_list[1]
+#   user_input = st.text_input(output_text, key = "input", on_change = Answer_check)
 
-elif mode == "Audio":
-  output_list = Audio()
-  output_text = output_list[0]
-  output_answer = output_list[1]
-  output_audio = output_list[2]
-  language = 'en'
-  tts = gTTS(text = output_audio, lang = language, slow = False)
-  tts.save('1.wav')
-  sound_file = '1.wav'
-  st.markdown("Please press play to listen to the audio")
-  st.audio(sound_file)
-  user_input = st.text_input("Enter your Answer here",key = "input", value = '', on_change = Answer_check)
+# elif mode == "Audio":
+output_list = Audio()
+output_text = output_list[0]
+output_answer = output_list[1]
+output_audio = output_list[2]
+language = 'en'
+tts = gTTS(text = output_audio, lang = language, slow = False)
+tts.save('1.wav')
+sound_file = '1.wav'
+st.markdown("Please press play to listen to the audio")
+st.audio(sound_file)
+user_input = st.text_input("Enter your Answer here",key = "input", value = '', on_change = Answer_check)
