@@ -1,5 +1,7 @@
 # Dhruv's MathBot
 
+**Live:** https://duresh08.github.io/Dhruv-s-Mental-Math-Simulator/
+
 Mental math practice for trading and quant interviews. Questions are read aloud, you type the answer, and you get +1 for a correct answer and −1 for a wrong one.
 
 - Addition, subtraction and multiplication, in any combination
@@ -17,6 +19,6 @@ python3 -m http.server 8000
 
 Then go to http://localhost:8000.
 
-To host it, turn on GitHub Pages for this repository (Settings → Pages → deploy from branch, root folder).
+It's hosted on GitHub Pages from the `main` branch, so pushing to `main` updates the live site.
 
 The original 2022 Streamlit version is still in `mathbot.py`.

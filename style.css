@@ -214,6 +214,9 @@ kbd {
 }
 .about p { margin: 0 0 14px; }
 .about .sig { color: var(--text); }
+.about .history { font-size: 13px; color: var(--faint); margin-top: 28px; }
+.about a { color: inherit; text-underline-offset: 3px; }
+.about a:hover { color: var(--text); }
 
 /* Settings dialog */
 dialog {
