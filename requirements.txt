@@ -1,4 +1,2 @@
-numpy
-gTTs
-streamlit
-IPython
+streamlit>=1.36
+gTTS
