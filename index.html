@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dhruv's MathBot</title>
+  <meta name="description" content="Mental math practice for trading and quant interviews, with questions read aloud.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="wrap bar-inner">
+      <span class="mark">Dhruv's MathBot</span>
+      <button type="button" class="link" id="openSettings">Settings</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="stage" aria-live="polite">
+      <div class="meta">
+        <span id="qnum">Ready</span>
+        <span id="modeLabel"></span>
+      </div>
+
+      <div class="prompt" id="prompt"></div>
+
+      <form id="answerForm" class="answer" autocomplete="off">
+        <label for="answer" class="sr-only">Your answer</label>
+        <input id="answer" type="text" inputmode="numeric" placeholder="Answer" disabled>
+        <button type="submit" class="enter" id="submitBtn" disabled>Enter</button>
+      </form>
+
+      <p class="last" id="last"></p>
+
+      <div class="actions">
+        <button type="button" class="btn" id="replay">Replay <kbd>R</kbd></button>
+        <button type="button" class="btn" id="skip">Skip <kbd>S</kbd></button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Session stats">
+      <div><span>Score</span><b id="score">0</b></div>
+      <div><span>Answered</span><b id="answered">0</b></div>
+      <div><span>Accuracy</span><b id="accuracy">–</b></div>
+      <div><span>Streak</span><b id="streak">0</b></div>
+      <div><span>Best</span><b id="best">0</b></div>
+    </section>
+
+    <section class="log">
+      <div class="log-head">
+        <h2>This session</h2>
+        <button type="button" class="link" id="reset">Reset</button>
+      </div>
+      <div class="row row-head" aria-hidden="true">
+        <span>#</span><span>Question</span><span>You</span><span>Answer</span><span></span>
+      </div>
+      <ol id="log"></ol>
+      <p class="empty" id="empty">Your answers will show up here.</p>
+    </section>
+
+    <section class="about">
+      <p>I built MathBot to practise mental math the way it actually comes up in trading and quant interviews: someone says the question out loud and you answer on the spot. Most practice sites only show the question on screen, which is a different skill. Here the question is spoken, you type the answer, and you get +1 for a right answer and −1 for a wrong one.</p>
+      <p>By default, addition and subtraction use numbers from 2 to 100, and multiplication is (2 to 12) × (2 to 100). You can raise the ranges in Settings. If you can do 4-digit by 4-digit multiplication in your head, you can legally call yourself a human calculator.</p>
+      <p class="sig">Dhruv Suresh</p>
+    </section>
+  </main>
+
+  <dialog id="settings" aria-labelledby="settingsTitle">
+    <form method="dialog" class="settings">
+      <div class="settings-head">
+        <h2 id="settingsTitle">Settings</h2>
+        <button class="link" value="close">Done</button>
+      </div>
+
+      <fieldset>
+        <legend>Operations</legend>
+        <div class="toggles" id="ops">
+          <button type="button" data-op="add">Addition</button>
+          <button type="button" data-op="sub">Subtraction</button>
+          <button type="button" data-op="mul">Multiplication</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mode</legend>
+        <div class="seg" id="mode">
+          <button type="button" data-mode="audio">Audio</button>
+          <button type="button" data-mode="visual">Visual</button>
+        </div>
+        <label class="check">
+          <input type="checkbox" id="autoplay">
+          <span>Read each question aloud automatically</span>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ranges</legend>
+        <div class="range">
+          <div class="range-label"><span>Addition and subtraction, up to</span><output id="addMaxOut"></output></div>
+          <input type="range" id="addMax" min="100" max="10000" step="50">
+        </div>
+        <div class="range">
+          <div class="range-label"><span>Multiplication, first number up to</span><output id="mul1MaxOut"></output></div>
+          <input type="range" id="mul1Max" min="12" max="1000" step="2">
+        </div>
+        <div class="range">
+          <div class="range-label"><span>Multiplication, second number up to</span><output id="mul2MaxOut"></output></div>
+          <input type="range" id="mul2Max" min="100" max="1000" step="2">
+        </div>
+        <p class="note" id="rangeNote"></p>
+      </fieldset>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
